@@ -1,10 +1,9 @@
 package user
 
 import (
-	"github.com/Gordisluis/LIGA-DRAFT/types"
 	"api/utils"
 	"net/http"
-
+	"api/types"
 	"github.com/gorilla/mux"
 )
 
@@ -25,12 +24,10 @@ func (h *Handler) handleLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) handleRegister(w http.ResponseWriter, r *http.Request) {
-	// obtener JSON carga
-	var payload types.RegisterUserPayLoad
-	if err := utils.ParseJSON(r, payload); err != nil {
+	var user types.RegisterUserPayLoad
+	if err := utils.ParseJSON(r, &user); err != nil {
 		utils.WriteError(w, http.StatusBadRequest, err)
+		return
 	}
-	// revisar si el user existe
 
-	// si no crearlos
 }
